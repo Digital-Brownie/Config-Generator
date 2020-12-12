@@ -70,6 +70,7 @@ namespace ConfigGenerator
                 try
                 {
                     _xmlSerializer.Serialize(writer, config, emptyNameSpaces);
+                    System.Console.WriteLine();
                 }
                 catch (System.Exception e)
                 {

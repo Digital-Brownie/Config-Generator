@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Xml;
 using System.Xml.Serialization;
@@ -46,7 +45,6 @@ namespace ConfigGenerator
                 try
                 {
                     writer.Write(config);
-                    System.Console.WriteLine();
                 }
                 catch (System.Exception e)
                 {
@@ -125,7 +123,12 @@ namespace ConfigGenerator
             }
             else
             {
-                string text = System.IO.File.ReadAllText("list");
+                if (string.IsNullOrEmpty(_settings.InputPath))
+                {
+                    throw new ArgumentNullException(nameof(_settings.InputPath));
+                }
+
+                string text = System.IO.File.ReadAllText(_settings.InputPath);
                 var speedsList = text.Replace("\r\n","")
                 .Split(',')
                 .Where(s => !string.IsNullOrEmpty(s))

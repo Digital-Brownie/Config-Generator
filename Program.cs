@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Xml;
-using System.Xml.Serialization;
 
 namespace ConfigGenerator
 {
@@ -27,7 +22,7 @@ namespace ConfigGenerator
             var settings = new ConfigSettings
             {
                 ConfigName = configNameIndex.IsPositive() ? args[++configNameIndex] : throw new Exception("Missing Config Name!"),
-                Speeds = speedsIndex.IsPositive() ? args[++speedsIndex].Split('-') : null,
+                Speeds = speedsIndex.IsPositive() ? args[++speedsIndex].Split('-') : new string[0],
                 OutputPath = outPathIndex.IsPositive() ? args[++outPathIndex] : null,
                 InputPath = inputPathIndex.IsPositive() ? args[++inputPathIndex] : null
             };
